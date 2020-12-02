@@ -1,57 +1,44 @@
 <!DOCTYPE html>
-<html lang="en" >
-
-<head>
-  <meta charset="UTF-8">
-  <title>Kai Wong</title>
-  <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1" >
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css'>
-
-      <link rel="stylesheet" href="css/style.css">
-
-  
-</head>
-
-<body class="blue lighten-5">
-
-  <div class="container">
-    <div class="row">
-      <div class="col s12">
-        <h1 class="center-align">Kai Wong</h1>
-      </div>
-    </div>
-    <hr>
-    <div class="row">
-      <div class="col s2"></div>
-      <div class="col s8">
-        <div class="card blue-grey lighten-1 hoverable">
-            <div class="card-image">
-              <img  class="materialboxed" src="files/tongue.JPG">
-            </div>
-          <div class="card-content white-text">
-            <p class="blue-text text-lighten-5">Hi! My site is currently under construction.</p>
-          </div>
-          <div class="card-action">
-            <a href="files/KaiWongCV.pdf">Resume</a>
-            <a href="https://www.linkedin.com/in/kaiwonghi/">LinkedIn</a>
-            <a href="http://github.com/Holayn">GitHub</a>
+<html>
+  <title>Kai</title>
+  <head>
+    <script src="https://unpkg.com/swup@latest/dist/swup.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/two.js/0.7.0/two.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand"/>
+    <link rel="stylesheet" href="css/style.css"/>
+  </head>
+  <body>
+    <main id="swup" class="transition-fade" style="display: flex; justify-content: center; align-items: center;">
+      <div class="panel" style="display: flex; height: 386px;">
+        <div id="left-text" style="display: flex; align-items: center; margin-right: 50px;">
+          projects
+        </div>
+        <div class="diamond">
+          <div style="padding-top: 85px; padding-left: 120px;">
+            <div id="left-rectangle" class="rectangle hvr-grow"></div>
           </div>
         </div>
+        <div>
+          <div id="top-text" style="display: flex; margin-bottom: 50px; justify-content: center;">
+            about
+          </div>
+          <div class="diamond" style="position: relative; z-index: 1">
+            <div>
+              <div id="top-rectangle" class="rectangle hvr-grow"></div>
+            </div>
+          </div>
+        </div>
+        <div class="diamond">
+          <div style="padding-top: 120px; padding-left: 85px;">
+            <div id="right-rectangle" class="rectangle hvr-grow"></div>
+          </div>
+        </div>
+        <div id="right-text" style="display: flex; align-items: center; margin-left: 50px;">
+          experience/skills
+        </div>
       </div>
-      <div class="col s2"></div>
-    </div>
-  </div>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js'></script>
-  <script>
-    $(document).ready(function(){
-      $('.materialboxed').materialbox();
-    });
-  </script>
-
-</body>
-
+    </main>
+    <script src="./index.js"></script>
+  </body>
 </html>
