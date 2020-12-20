@@ -8,6 +8,7 @@ export const router = new VueRouter({
       component: About,
     },
     {
+      name: 'home',
       path: '/',
       component: Home,
     },

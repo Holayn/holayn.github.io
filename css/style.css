@@ -57,7 +57,7 @@
 }
 
 .dock-item:hover + li, .dock-item.prev {
-  transform: scale(1.05);
+  transform: scale(1.2);
   transition: transform 0.3s, opacity 1s margin-left 1s, margin-right 1s;
 }
 
@@ -79,12 +79,14 @@
 .dock-item .icon {
   margin: auto;
   z-index: 1;
+  cursor: pointer;
 }
 
 .card {
   background-color: var(--color2);
   border-radius: 10px;
-  padding: 10px;
+  padding: 10px 20px 10px 20px;
+  color: var(--color5);
 }
 
 .fade-enter-active, .fade-leave-active {
