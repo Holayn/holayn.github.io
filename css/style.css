@@ -5,18 +5,37 @@
   --color3: #9A8C98;
   --color4: #C9ADA7;
   --color5: #F2E9E4;
-  /* --animate-delay: 0.5s; */
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--color1);
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--color2);
+  border-radius: 20px;
+  border: 3px solid var(--color1);
 }
 
 .header-text {
   color: var(--color3);
-  font-size: xxx-large;
 }
 
 .diamond {
   width: 100px;
   height: 100px;
   transform: rotate(45deg);
+}
+
+.sections > div:nth-child(odd) {
+  background-color: var(--color2);
+}
+.sections {
+  color: var(--color5);
 }
 
 .dock {
@@ -89,12 +108,15 @@
   color: var(--color5);
 }
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .3s;
+.expand-enter-active, .expand-leave-active {
+  transition: height .3s ease-in-out, color .3s linear;
 }
 
-.fade-enter, .fade-leave-to {
-  opacity: 0;
+.expand-enter, .expand-leave-to {
+  height: 0;
+
+  /* hide flash of text when transitioning */
+  color: transparent;
 }
 
 .rectangle {

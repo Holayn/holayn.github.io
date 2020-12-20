@@ -1,8 +1,10 @@
 export const interests = /*html*/`
-  <h3>Piano</h3>
-  <p>since age 5</p>
-  <p>achievements:</p>
-  <ul>
-    <li>nov 2018: delivered senior recital @ Marist College</li>
-  </ul>
+  <div class="inline text-xl">Piano</div>
+  <div class="inline italic">since age 5</div>
+  <div class="p-6">
+    achievements:
+    <ul class="list-disc">
+      <li>nov 2018: delivered senior recital @ Marist College</li>
+    </ul>
+  </div>
 `;

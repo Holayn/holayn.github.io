@@ -25,19 +25,35 @@ const cardContentMap = {
   interests
 }
 
-Vue.component('about-dock-item', {
+Vue.component('about-item', {
   template: /*html*/`
-    <li class="dock-item" style="display: grid; grid-template-columns: 1fr;" :style="{opacity: selectedSection === section ? 1 : null}">
-      <div class="text" :style="{visibility: selectedSection === section ? 'visible' : null}">{{section}}</div>
-      <div class="icon"><div v-html="icon"></div></div>
-      <div class="diamond">
-        <div>
-          <div class="rectangle"></div>
-        </div>
+  <transition name="expand" mode="out-in">
+    <div v-if="active" style="min-height: 80px" @click="active = !active" class="h-96 p-6 shadow-2xl cursor-pointer" key="expanded">
+      <div class="text-2xl">
+        {{section}}
       </div>
-    </li>
+      <div class="pt-6 text-l">
+        <div v-html="getContent()"></div>
+      </div>
+    </div>
+    <div v-else style="min-height: 80px" @click="active = !active" class="p-6 shadow-2xl cursor-pointer" key="collapsed">
+      <div class="text-2xl">
+        {{section}}
+      </div>
+    </div>
+  </transition>
   `,
-  props: ['selectedSection', 'section', 'icon'],
+  props: ['section'],
+  data: () => {
+    return {
+      active: false,
+    };
+  },
+  methods: {
+    getContent() {
+      return cardContentMap[this.section];
+    }
+  }
 });
 
 export const About = Vue.component('about', {
@@ -72,32 +88,6 @@ export const About = Vue.component('about', {
     const elems = document.getElementsByClassName('rectangle');
     for (let i=0; i<elems.length; i++) {
       drawRectangle(elems.item(i), 75);
-    }
-
-    function addPrevClass (e) {
-      const target = e.target;
-      let elemPtr = target;
-      let dockItem;
-      while (elemPtr.className !== 'dock-item' && elemPtr !== null) {
-        elemPtr = elemPtr.parentNode;
-      }
-      dockItem = elemPtr;
-      const prevDockItem = dockItem.previousElementSibling;
-      if (prevDockItem) {
-        prevDockItem.classList.add('prev');
-
-        target.addEventListener('mouseout', function() {
-          prevDockItem.classList.remove('prev');
-        }, false);
-      }
-    }
-
-    const dockElems = document.getElementsByClassName('dock-item');
-    if (!dockElems.length) {
-      return;
-    }
-    for (let i=0; i<dockElems.length; i++) {
-      dockElems.item(i).addEventListener('mouseover', addPrevClass, false);
     }
   },
 });

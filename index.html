@@ -3,6 +3,7 @@
   <title>Kai</title>
   <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/two.js/0.7.0/two.min.js"></script>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand"/>
     <link rel="stylesheet" href="css/style.css"/>
@@ -49,38 +50,31 @@
 
       <script type="text/x-template" id="about">
         <main>
-          <div style="height: 100%; display: grid; grid-template-columns: auto; grid-template-rows: 25px 25% 400px 200px auto">
-            <div @click="navigate({name: 'home'})" style="display: flex; justify-content: center; cursor: pointer;">
+          <div class="grid h-full" style="grid-template-rows: 25px 25% 400px auto">
+            <div @click="navigate({name: 'home'})" class="flex justify-center items-center cursor-pointer p-6">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#C9ADA7" width="36px" height="36px"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
             </div>
             <div style="display: flex; align-items: flex-end; justify-content: center;">
-              <div class="header-text" style="padding-bottom: 50px;">
+              <div class="header-text text-5xl pb-20">
                 about me
               </div>
             </div>
-            <div style="display: flex; align-items: center; justify-content: center;">
-              <div style="height:400px; width:400px; border-radius: 100%; overflow: hidden;">
-                <img style="width: 494px; margin-left: -18%; margin-top: -10%" class="animate__animated animate__fadeIn" src="./assets/about-cover.JPG"/>
-              </div>
+            <div class="flex items-center justify-center pb-20">
+              <img class="w-96 h-96 rounded-full object-cover animate__animated animate__fadeIn" src="./assets/about-cover.JPG"/>
             </div>
-            <div style="display: flex; padding-top: 50px;">
-              <ul class="dock" style="display: flex; flex-direction: row; padding: unset;">
-                <about-dock-item @click.native="selectSection('education')" :selectedSection="section" :section="'education'" :icon="educationIcon"></about-dock-item>
-                <about-dock-item @click.native="selectSection('interests')" :selectedSection="section" :section="'interests'" :icon="interestsIcon"></about-dock-item>
-                <about-dock-item @click.native="selectSection('backpack')" :selectedSection="section" :section="'backpack'" :icon="backpackIcon"></about-dock-item>
-                <about-dock-item @click.native="selectSection('map')" :selectedSection="section" :section="'map'" :icon="mapIcon"></about-dock-item>
-                <about-dock-item @click.native="selectSection('pics')" :selectedSection="section" :section="'pics'" :icon="picsIcon"></about-dock-item>
-                <about-dock-item @click.native="selectSection('resume')" :selectedSection="section" :section="'resume'" :icon="resumeIcon"></about-dock-item>
-              </ul>
-            </div>
-            <div style="display: flex; justify-content: center">
-              <div class="card" style="width: 50%;">
-                <transition name="fade" mode="out-in">
-                  <div :key="section">
-                    <div v-html="cardContent"></div>
-                  </div>
-                </transition>
-              </div>
+            <div class="sections">
+              <about-item :section="'education'">
+              </about-item>
+              <about-item :section="'interests'">
+              </about-item>
+              <about-item :section="'backpack'">
+              </about-item>
+              <about-item :section="'map'">
+              </about-item>
+              <about-item :section="'pics'">
+              </about-item>
+              <about-item :section="'resume'">
+              </about-item>
             </div>
           </div>
         </main>
