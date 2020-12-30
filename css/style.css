@@ -124,13 +124,49 @@
 }
 
 .rectangle {
-  width: 100px;
-  height: 100px;
+  width: 5rem;
+  height: 5rem;
   cursor: pointer;
 }
 
 .text {
   color: var(--color2)
+}
+
+@media screen and (min-width: 1024px) {
+  .left-diamond {
+    padding-top: 65px;
+    padding-left: 123px;
+  }
+  .right-diamond {
+    padding-left: 65px;
+    padding-top: 123px;
+  }
+  #left-text {
+    margin-right: 50px;
+  }
+  #right-text {
+    margin-left: 50px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .left-diamond {
+    padding-top: 165px;
+    padding-left: 154px;
+  }
+  .right-diamond {
+    padding-left: 166px;
+    padding-top: 153px;
+  }
+  #left-text {
+    top: 450px;
+    right: 315px;
+  }
+  #right-text {
+    top: 450px;
+    left: 250px;
+  }
 }
 
 #left-rectangle {

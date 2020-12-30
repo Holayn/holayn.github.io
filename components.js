@@ -10,12 +10,25 @@ import {interests} from './about/interests.js';
 export const Home = Vue.component('home', {
   template: '#home',
   methods: {
+    makeRectangles() {
+      makeRectangle(this.$refs['top-rectangle'], 'top-text');
+      makeRectangle(this.$refs['left-rectangle'], 'left-text');
+      makeRectangle(this.$refs['right-rectangle'], 'right-text');
+    },
     navigate,
   },
-  mounted: () => {
-    makeRectangle(document.getElementById('top-rectangle'), 'top-text');
-    makeRectangle(document.getElementById('left-rectangle'), 'left-text');
-    makeRectangle(document.getElementById('right-rectangle'), 'right-text');
+  mounted: function() {
+    this.makeRectangles();
+    window.addEventListener('resize', () => {
+      // Only call makeRectangles() when hitting breakpoint
+      if (window.innerWidth < 1024 && !window.smallWidth) {
+        window.smallWidth = true;
+        this.makeRectangles();
+      } else if (window.innerWidth >= 1024 && window.smallWidth) {
+        window.smallWidth = false;
+        this.makeRectangles();
+      }
+    });
   },
 });
 
