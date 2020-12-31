@@ -16,10 +16,7 @@ export const Home = Vue.component('home', {
       makeRectangle(this.$refs['right-rectangle'], 'right-text');
     },
     navigate,
-  },
-  mounted: function() {
-    this.makeRectangles();
-    window.addEventListener('resize', () => {
+    onResize() {
       // Only call makeRectangles() when hitting breakpoint
       if (window.innerWidth < 1024 && !window.smallWidth) {
         window.smallWidth = true;
@@ -28,7 +25,14 @@ export const Home = Vue.component('home', {
         window.smallWidth = false;
         this.makeRectangles();
       }
-    });
+    }
+  },
+  mounted: function() {
+    this.makeRectangles();
+    window.addEventListener('resize', this.onResize);
+  },
+  destroyed: function() {
+    window.removeEventListener('resize', this.onResize);
   },
 });
 
