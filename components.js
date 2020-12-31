@@ -1,6 +1,6 @@
 import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.esm.browser.js';
 
-import {makeRectangle, drawRectangle} from './rectangle.js';
+import {makeRectangle} from './rectangle.js';
 import {navigate} from './utils.js';
 
 import {defaultContent} from './about/default.js';
@@ -45,7 +45,7 @@ const cardContentMap = {
 Vue.component('about-item', {
   template: /*html*/`
   <transition name="expand" :duration="{leave: leaveDuration}" mode="out-in" @after-enter="afterEnter">
-    <div v-if="active" style="min-height: 80px" @click="toggle" class="h-96 p-6 shadow-2xl cursor-pointer" key="expanded">
+    <div v-if="active" style="min-height: 5rem" @click="toggle" class="h-96 p-6 shadow-2xl cursor-pointer" key="expanded">
       <div class="text-2xl">
         {{section}}
       </div>
@@ -55,7 +55,7 @@ Vue.component('about-item', {
       </transition>
       </div>
     </div>
-    <div v-else style="min-height: 80px" @click="toggle" class="p-6 shadow-2xl cursor-pointer" key="collapsed">
+    <div v-else style="min-height: 5rem" @click="toggle" class="p-6 shadow-2xl cursor-pointer" key="collapsed">
       <div class="text-2xl">
         {{section}}
       </div>
@@ -107,21 +107,6 @@ export const About = Vue.component('about', {
     }
   },
   methods: {
-    selectSection: function(section) {
-      if (this.section === section) {
-        this.section = 'default';
-        this.cardContent = cardContentMap['default'];
-        return;
-      }
-      this.section = section;
-      this.cardContent = cardContentMap[section];
-    },
     navigate,
-  },
-  mounted: () => {
-    const elems = document.getElementsByClassName('rectangle');
-    for (let i=0; i<elems.length; i++) {
-      drawRectangle(elems.item(i), 75);
-    }
   },
 });
