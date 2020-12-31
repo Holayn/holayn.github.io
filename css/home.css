@@ -7,6 +7,10 @@
     padding-left: 65px;
     padding-top: 123px;
   }
+  .top-diamond {
+    padding-top: 53px;
+    padding-left: 53px;
+  }
   #left-text {
     margin-right: 50px;
   }
@@ -23,6 +27,10 @@
   .right-diamond {
     padding-left: 166px;
     padding-top: 153px;
+  }
+  .top-diamond {
+    padding-top: 80px;
+    padding-left: 81px;
   }
   #left-text {
     top: 450px;

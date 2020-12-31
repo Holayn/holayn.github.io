@@ -20,7 +20,7 @@
       <script type="text/x-template" id="home">
         <main style="display: flex; justify-content: center; align-items: center;">
           <div class="flex relative panel" style="height: 20rem">
-            <div id="left-text" class="flex absolute lg:static items-center" style="top: 450px; right: 300px;">
+            <div id="left-text" class="flex absolute lg:static items-center text-2xl" style="top: 450px; right: 300px;">
               projects
             </div>
             <div class="diamond">
@@ -28,12 +28,12 @@
                 <canvas id="left-rectangle" ref="left-rectangle" class="rectangle hvr-grow"></canvas>
               </div>
             </div>
-            <div>
-              <div id="top-text" class="flex justify-center" style="margin-bottom: 50px">
+            <div class="flex justify-center">
+              <div id="top-text" class="flex absolute justify-center text-2xl" style="margin-bottom: 50px">
                 about
               </div>
               <div class="diamond relative z-10">
-                <div>
+                <div class="top-diamond">
                   <canvas @click="navigate('about')" id="top-rectangle" ref="top-rectangle" class="rectangle hvr-grow"></canvas>
                 </div>
               </div>
@@ -43,7 +43,7 @@
                 <canvas id="right-rectangle" ref="right-rectangle" class="rectangle hvr-grow"></canvas>
               </div>
             </div>
-            <div id="right-text" class="flex absolute lg:static items-center" style="top: 450px; left: 250px;">
+            <div id="right-text" class="flex absolute lg:static items-center text-2xl" style="top: 450px; left: 250px;">
               experience/skills
             </div>
           </div>
