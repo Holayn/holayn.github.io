@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="css/style.css"/>
     <link rel="stylesheet" href="css/scrollbar.css"/>
     <link rel="stylesheet" href="css/accordion.css"/>
+    <link rel="stylesheet" href="css/spinner.css"/>
     <link rel="stylesheet" href="css/home.css"/>
+    <link rel="stylesheet" href="css/projects.css"/>
     <link rel="preload" as="image" href="./assets/about-cover.JPG"/>
   </head>
   <body>
@@ -123,7 +125,7 @@
 
     <script type="text/x-template" id="projects">
       <main>
-        <div class="grid h-full" style="grid-template-rows: 5rem 15rem 25rem auto">
+        <div class="grid h-full" style="grid-template-rows: 5rem 15rem 5rem auto">
           <div class="flex justify-center items-center p-6">
             <div class="z-10 cursor-pointer" @click="navigate({name: 'home'})">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#C9ADA7" width="2rem" height="2rem"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
@@ -134,9 +136,34 @@
               projects
             </div>
           </div>
-          <div v-if="!loading">
-            {{filteredRepos}}
+          <div class="flex items-center justify-center">
+            <div class="text text-2xl">
+              a collection featuring my favorite projects
+            </div>
           </div>
+          <transition name="fade" mode="out-in">
+            <div v-if="loading" class="flex justify-center pt-16" key="loading">
+              <div class="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-32 w-32"></div>
+            </div>
+            <div v-if="!loading" class="grid gap-4 p-4" style="grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); grid-template-rows: repeat(auto-fill, 20rem);">
+              <div v-for="repo in repos" :key="repo.id" class="card rounded-md p-6">
+                <div class="grid grid-cols-4 h-full" style="grid-template-rows: 3rem auto">
+                  <div class="col-span-3 text-2xl">
+                    {{repo.name}}
+                  </div>
+                  <div class="flex row-span-2 items-center justify-end">
+                    <a class="cursor-pointer" :href="repo.html_url" onclick="return false" @click="goToSourceCode(repo.html_url)" v-html="sourceCodeIcon"></a>
+                  </div>
+                  <div class="col-span-3 text-md">
+                    {{repo.description}}
+                  </div>
+                </div>
+                <div>
+                  {{repo.tags.join(', ')}}
+                </div>
+              </div>
+            </div>
+          </transition>
         </div>
       </main>
     </script>

@@ -1,0 +1,12 @@
+.card {
+  background-color: var(--color4);
+  color: var(--color5);
+}
+
+a {
+  transition-duration: 0.3s;
+  transition-property: transform;
+}
+a:hover {
+  transform: scale(1.1);
+}
