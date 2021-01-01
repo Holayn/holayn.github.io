@@ -110,3 +110,12 @@ export const About = Vue.component('about', {
     navigate,
   },
 });
+
+export const Projects = Vue.component('projects', {
+  template: '#projects',
+  methods: {
+    navigate,
+  },
+});
+
+export const Blog = Vue.component('blog', {});

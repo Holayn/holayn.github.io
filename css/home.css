@@ -32,14 +32,20 @@
     padding-top: 80px;
     padding-left: 81px;
   }
+  #right-text {
+    margin-left: 100px;
+  }
   #left-text {
+    margin-right: 100px;
+  }
+  /* #left-text {
     top: 450px;
     right: 315px;
   }
   #right-text {
     top: 450px;
     left: 250px;
-  }
+  } */
 }
 
 #left-rectangle {

@@ -20,12 +20,12 @@
       <script type="text/x-template" id="home">
         <main style="display: flex; justify-content: center; align-items: center;">
           <div class="flex relative panel" style="height: 20rem">
-            <div id="left-text" class="flex absolute lg:static items-center text-2xl" style="top: 450px; right: 300px;">
+            <div id="left-text" class="flex items-center text-2xl">
               projects
             </div>
             <div class="diamond">
               <div class="left-diamond">
-                <canvas id="left-rectangle" ref="left-rectangle" class="rectangle hvr-grow"></canvas>
+                <canvas @click="navigate('projects')" id="left-rectangle" ref="left-rectangle" class="rectangle hvr-grow"></canvas>
               </div>
             </div>
             <div class="flex justify-center">
@@ -43,8 +43,8 @@
                 <canvas id="right-rectangle" ref="right-rectangle" class="rectangle hvr-grow"></canvas>
               </div>
             </div>
-            <div id="right-text" class="flex absolute lg:static items-center text-2xl" style="top: 450px; left: 250px;">
-              experience/skills
+            <div id="right-text" class="flex items-center text-2xl">
+              xp/skills
             </div>
           </div>
         </main>
@@ -73,6 +73,23 @@
               <about-item :section="'map'"></about-item>
               <about-item :section="'pics'"></about-item>
               <about-item :section="'resume'"></about-item>
+            </div>
+          </div>
+        </main>
+      </script>
+
+      <script type="text/x-template" id="projects">
+        <main>
+          <div class="grid h-full" style="grid-template-rows: 5rem 15rem 25rem auto">
+            <div class="flex justify-center items-center p-6">
+              <div class="z-10 cursor-pointer" @click="navigate({name: 'home'})">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#C9ADA7" width="2rem" height="2rem"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+              </div>
+            </div>
+            <div class="flex items-end justify-center">
+              <div class="header-text text-5xl pb-20">
+                projects
+              </div>
             </div>
           </div>
         </main>
