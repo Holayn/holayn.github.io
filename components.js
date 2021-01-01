@@ -14,6 +14,7 @@ export const Home = Vue.component('home', {
       makeRectangle(this.$refs['top-rectangle'], 'top-text');
       makeRectangle(this.$refs['left-rectangle'], 'left-text');
       makeRectangle(this.$refs['right-rectangle'], 'right-text');
+      makeRectangle(this.$refs['bottom-rectangle'], 'bottom-text');
     },
     navigate,
     onResize() {
@@ -116,6 +117,48 @@ export const Projects = Vue.component('projects', {
   methods: {
     navigate,
   },
+  data: function() {
+    return {
+      loading: false,
+      repoIds: [
+        254956301, // chat
+        146653740, // personal website
+        262202529, // sale scraper
+        216396300, // player
+      ],
+      repos: [],
+    };
+  },
+  created: async function() {
+    this.loading = true;
+    this.repos = await (await fetch('https://api.github.com/users/Holayn/repos')).json();
+    this.loading = false;
+  },
+  computed: {
+    filteredRepos: function() {
+      return this.repos.reduce((acc, val) => {
+        if (this.repoIds.includes(val.id)) {
+          acc.push({
+            id: val.id,
+            name: val.name,
+          });
+        }
+        return acc;
+      }, []);
+    },
+  }
 });
 
-export const Blog = Vue.component('blog', {});
+export const Blog = Vue.component('blog', {
+  template: '#xpskills',
+  methods: {
+    navigate,
+  },
+});
+
+export const XpSkills = Vue.component('xpskills', {
+  template: '#blog',
+  methods: {
+    navigate,
+  },
+})

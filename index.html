@@ -16,85 +16,130 @@
       <transition name="fade" mode="out-in">
         <router-view></router-view>
       </transition>
+    </div>
 
-      <script type="text/x-template" id="home">
-        <main style="display: flex; justify-content: center; align-items: center;">
-          <div class="flex relative panel" style="height: 20rem">
-            <div id="left-text" class="flex items-center text-2xl">
+    <script type="text/x-template" id="home">
+      <main style="display: flex; justify-content: center; align-items: center;">
+        <div class="flex relative panel" style="height: 20rem">
+          <div id="left-text" class="flex items-center text-2xl">
+            projects
+          </div>
+          <div class="diamond z-10">
+            <div class="left-diamond">
+              <canvas @click="navigate('projects')" id="left-rectangle" ref="left-rectangle" class="rectangle hvr-grow"></canvas>
+            </div>
+          </div>
+          <div class="flex flex-col items-center">
+            <div id="top-text" class="flex absolute justify-center text-2xl" style="margin-bottom: 50px">
+              about
+            </div>
+            <div class="diamond relative z-10">
+              <div class="top-diamond">
+                <canvas @click="navigate('about')" id="top-rectangle" ref="top-rectangle" class="rectangle hvr-grow"></canvas>
+              </div>
+            </div>
+            <div class="diamond">
+              <div class="bottom-diamond">
+                <canvas @click="navigate('blog')" id="bottom-rectangle" ref="bottom-rectangle" class="rectangle hvr-grow"></canvas>
+              </div>
+            </div>
+            <div id="bottom-text" class="flex items-center text-2xl">
+              blog
+            </div>
+          </div>
+          <div class="diamond">
+            <div class="right-diamond">
+              <canvas @click="navigate('xpskills')" id="right-rectangle" ref="right-rectangle" class="rectangle hvr-grow"></canvas>
+            </div>
+          </div>
+          <div id="right-text" class="flex items-center text-2xl">
+            xp/skills
+          </div>
+        </div>
+      </main>
+    </script>
+
+    <script type="text/x-template" id="about">
+      <main>
+        <div class="grid h-full" style="grid-template-rows: 5rem 15rem 25rem auto">
+          <div class="flex justify-center items-center p-6">
+            <div class="z-10 cursor-pointer" @click="navigate({name: 'home'})">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#C9ADA7" width="2rem" height="2rem"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            </div>
+          </div>
+          <div class="flex items-end justify-center">
+            <div class="header-text text-5xl pb-20">
+              about me
+            </div>
+          </div>
+          <div class="flex items-center justify-center pb-20">
+            <img class="w-96 h-96 rounded-full object-cover animate__animated animate__fadeIn" src="./assets/about-cover.JPG"/>
+          </div>
+          <div class="sections">
+            <about-item :section="'education'"></about-item>
+            <about-item :section="'interests'"></about-item>
+            <about-item :section="'backpack'"></about-item>
+            <about-item :section="'map'"></about-item>
+            <about-item :section="'pics'"></about-item>
+            <about-item :section="'resume'"></about-item>
+          </div>
+        </div>
+      </main>
+    </script>
+
+    <script type="text/x-template" id="blog">
+      <main>
+        <div class="grid h-full" style="grid-template-rows: 5rem 15rem 25rem auto">
+          <div class="flex justify-center items-center p-6">
+            <div class="z-10 cursor-pointer" @click="navigate({name: 'home'})">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#C9ADA7" width="2rem" height="2rem"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            </div>
+          </div>
+          <div class="flex items-end justify-center">
+            <div class="header-text text-5xl pb-20">
+              blog
+            </div>
+          </div>
+        </div>
+      </main>
+    </script>
+
+    <script type="text/x-template" id="xpskills">
+      <main>
+        <div class="grid h-full" style="grid-template-rows: 5rem 15rem 25rem auto">
+          <div class="flex justify-center items-center p-6">
+            <div class="z-10 cursor-pointer" @click="navigate({name: 'home'})">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#C9ADA7" width="2rem" height="2rem"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            </div>
+          </div>
+          <div class="flex items-end justify-center">
+            <div class="header-text text-5xl pb-20">
+              experience/skills
+            </div>
+          </div>
+        </div>
+      </main>
+    </script>
+
+    <script type="text/x-template" id="projects">
+      <main>
+        <div class="grid h-full" style="grid-template-rows: 5rem 15rem 25rem auto">
+          <div class="flex justify-center items-center p-6">
+            <div class="z-10 cursor-pointer" @click="navigate({name: 'home'})">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#C9ADA7" width="2rem" height="2rem"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            </div>
+          </div>
+          <div class="flex items-end justify-center">
+            <div class="header-text text-5xl pb-20">
               projects
             </div>
-            <div class="diamond">
-              <div class="left-diamond">
-                <canvas @click="navigate('projects')" id="left-rectangle" ref="left-rectangle" class="rectangle hvr-grow"></canvas>
-              </div>
-            </div>
-            <div class="flex justify-center">
-              <div id="top-text" class="flex absolute justify-center text-2xl" style="margin-bottom: 50px">
-                about
-              </div>
-              <div class="diamond relative z-10">
-                <div class="top-diamond">
-                  <canvas @click="navigate('about')" id="top-rectangle" ref="top-rectangle" class="rectangle hvr-grow"></canvas>
-                </div>
-              </div>
-            </div>
-            <div class="diamond">
-              <div class="right-diamond">
-                <canvas id="right-rectangle" ref="right-rectangle" class="rectangle hvr-grow"></canvas>
-              </div>
-            </div>
-            <div id="right-text" class="flex items-center text-2xl">
-              xp/skills
-            </div>
           </div>
-        </main>
-      </script>
-
-      <script type="text/x-template" id="about">
-        <main>
-          <div class="grid h-full" style="grid-template-rows: 5rem 15rem 25rem auto">
-            <div class="flex justify-center items-center p-6">
-              <div class="z-10 cursor-pointer" @click="navigate({name: 'home'})">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#C9ADA7" width="2rem" height="2rem"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-              </div>
-            </div>
-            <div class="flex items-end justify-center">
-              <div class="header-text text-5xl pb-20">
-                about me
-              </div>
-            </div>
-            <div class="flex items-center justify-center pb-20">
-              <img class="w-96 h-96 rounded-full object-cover animate__animated animate__fadeIn" src="./assets/about-cover.JPG"/>
-            </div>
-            <div class="sections">
-              <about-item :section="'education'"></about-item>
-              <about-item :section="'interests'"></about-item>
-              <about-item :section="'backpack'"></about-item>
-              <about-item :section="'map'"></about-item>
-              <about-item :section="'pics'"></about-item>
-              <about-item :section="'resume'"></about-item>
-            </div>
+          <div v-if="!loading">
+            {{filteredRepos}}
           </div>
-        </main>
-      </script>
-
-      <script type="text/x-template" id="projects">
-        <main>
-          <div class="grid h-full" style="grid-template-rows: 5rem 15rem 25rem auto">
-            <div class="flex justify-center items-center p-6">
-              <div class="z-10 cursor-pointer" @click="navigate({name: 'home'})">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#C9ADA7" width="2rem" height="2rem"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-              </div>
-            </div>
-            <div class="flex items-end justify-center">
-              <div class="header-text text-5xl pb-20">
-                projects
-              </div>
-            </div>
-          </div>
-        </main>
-      </script>
-    </div>
+        </div>
+      </main>
+    </script>
     <script type="module" src="./index.js"></script>
   </body>
 </html>
