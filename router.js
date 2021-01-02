@@ -1,5 +1,9 @@
 import VueRouter from 'https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.4.9/vue-router.esm.browser.js';
-import {About, Blog, Home, Projects, XpSkills} from './components.js';
+import {Blog} from './components/blog.js';
+import {About} from './components/about/about.js';
+import {Home} from './components/home.js';
+import {Projects} from './components/projects.js';
+import {XpSkills} from './components/xpskills/xpskills.js';
 
 export const router = new VueRouter({
   routes: [
