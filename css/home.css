@@ -1,10 +1,10 @@
 @media screen and (min-width: 1024px) {
   .left-diamond {
-    padding-top: 65px;
+    padding-top: 69px;
     padding-left: 123px;
   }
   .right-diamond {
-    padding-left: 65px;
+    padding-left: 69px;
     padding-top: 123px;
   }
   .top-diamond {
@@ -12,8 +12,8 @@
     padding-left: 53px;
   }
   .bottom-diamond {
-    padding-top: 64px;
-    padding-left: 64px;
+    padding-top: 68px;
+    padding-left: 68px;
   }
   #left-text {
     margin-right: 50px;
@@ -28,11 +28,11 @@
 
 @media screen and (max-width: 1024px) {
   .left-diamond {
-    padding-top: 165px;
-    padding-left: 151px;
+    padding-top: 168px;
+    padding-left: 150px;
   }
   .right-diamond {
-    padding-left: 165px;
+    padding-left: 168px;
     padding-top: 150px;
   }
   .top-diamond {
@@ -40,8 +40,8 @@
     padding-left: 80px;
   }
   .bottom-diamond {
-    padding-top: 164px;
-    padding-left: 164px;
+    padding-top: 168px;
+    padding-left: 168px;
   }
   #bottom-text {
     margin-top: 350px;
@@ -54,18 +54,6 @@
   }
 }
 
-#left-rectangle {
-  animation: pulse-left 3s infinite;
-}
-#right-rectangle {
-  animation: pulse-right 3s infinite;
-}
-#top-rectangle {
-  animation: pulse-up 3s infinite;
-}
-#bottom-rectangle {
-  animation: pulse-down 3s infinite;
-}
 #left-rectangle:hover {
   transform: translateX(-5px) translateY(5px);
 }

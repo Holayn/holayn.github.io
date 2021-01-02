@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/spinner.css"/>
     <link rel="stylesheet" href="css/home.css"/>
     <link rel="stylesheet" href="css/projects.css"/>
+    <link rel="stylesheet" href="css/xpskills.css"/>
     <link rel="preload" as="image" href="./assets/about-cover.JPG"/>
   </head>
   <body>
@@ -108,7 +109,7 @@
 
     <script type="text/x-template" id="xpskills">
       <main>
-        <div class="grid h-full" style="grid-template-rows: 5rem 15rem 25rem auto">
+        <div class="grid h-full" style="grid-template-rows: 5rem 15rem auto">
           <div class="flex justify-center items-center p-6">
             <div class="z-10 cursor-pointer" @click="navigate({name: 'home'})">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#C9ADA7" width="2rem" height="2rem"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
@@ -119,6 +120,61 @@
               experience/skills
             </div>
           </div>
+          <div class="flex flex-wrap items-center justify-center pb-8">
+            <div class="flex flex-col items-center justify-center p-6">
+              <div class="bright-text text-2xl">core</div>
+              <div class="text text-xl pb-6">primary languages/technologies</div>
+              <div class="core flex flex-col items-center justify-center rounded-full h-96 w-96">
+                <div class="flex">
+                  <img src="./assets/vue.png" class="h-16"/>
+                  <img src="./assets/js.png" class="h-16"/>
+                  <img src="./assets/ts.png" class="h-16"/>
+                </div>
+                <div class="flex">
+                  <img src="./assets/node.png" class="h-16"/>
+                  <img src="./assets/html.png" class="h-16"/>
+                  <img src="./assets/css.png" class="h-16"/>
+                </div>
+                <div>
+                  frontend dev
+                </div>
+                <div>
+                  backend dev
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col items-center justify-center p-6">
+              <div class="bright-text text-2xl">secondary</div>
+              <div class="text text-xl pb-6">used these in the past</div>
+              <div class="secondary flex flex-col items-center justify-center rounded-full h-72 w-72">
+                <div class="flex">
+                  <img src="./assets/java.png" class="h-16"/>
+                  <img src="./assets/sql.png" class="h-16"/>
+                  <img src="./assets/python.png" class="h-16"/>
+                </div>
+                <div class="flex">
+                  <img src="./assets/angular.png" class="h-16"/>
+                  <img src="./assets/php.png" class="h-16"/>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col items-center justify-center p-6">
+              <div class="bright-text text-2xl">misc</div>
+              <div class="text text-xl pb-6">use them daily</div>
+              <div class="misc flex flex-col items-center justify-center rounded-full h-72 w-72">
+                <div class="flex">
+                  <img src="./assets/git.png" class="h-16"/>
+                </div>
+                <div class="flex">
+                  <img src="./assets/heroku.png" class="h-16"/>
+                  <img src="./assets/jenkins.png" class="h-16"/>
+                </div>
+              </div>
+            </div>
+          </div>
+          <experience-item :img="'./assets/factset.png'" :item="'factset'"></experience-item>
+          <experience-item :img="'./assets/factset.png'" :item="'factsetIntern'"></experience-item>
+          <experience-item :img="'./assets/ibm.png'" :item="'ibm'"></experience-item>
         </div>
       </main>
     </script>

@@ -29,6 +29,10 @@ main {
   color: var(--color2)
 }
 
+.bright-text {
+  color: var(--color4);
+}
+
 .diamond {
   width: 100px;
   height: 100px;
