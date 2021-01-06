@@ -2,6 +2,7 @@
 <html class="text-3xl lg:text-base">
   <title>Kai</title>
   <head>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand"/>
@@ -12,6 +13,7 @@
     <link rel="stylesheet" href="css/home.css"/>
     <link rel="stylesheet" href="css/projects.css"/>
     <link rel="stylesheet" href="css/xpskills.css"/>
+    <link rel="stylesheet" href="css/blog.css"/>
     <link rel="preload" as="image" href="./assets/about-cover.JPG"/>
   </head>
   <body>
@@ -91,8 +93,8 @@
     </script>
 
     <script type="text/x-template" id="blog">
-      <main>
-        <div class="grid h-full" style="grid-template-rows: 5rem 15rem 25rem auto">
+      <main class="blog">
+        <div class="grid h-full" style="grid-template-rows: 5rem 15rem auto">
           <div class="flex justify-center items-center p-6">
             <div class="z-10 cursor-pointer" @click="navigate({name: 'home'})">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#C9ADA7" width="2rem" height="2rem"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
@@ -103,6 +105,34 @@
               blog
             </div>
           </div>
+          <transition name="fade" mode="out-in">
+            <div v-if="loading" class="flex justify-center pt-16" key="loading">
+              <div class="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-32 w-32"></div>
+            </div>
+            <div v-if="!loading" class="grid gap-4 py-4">
+              <div v-for="post in posts" :key="post.id" class="py-12">
+                <div class="flex justify-center bright-text text-4xl">
+                  {{post.title}}
+                </div>
+                <div class="flex justify-center bright-text text-2xl">
+                  {{post.date.toDateString()}}
+                </div>
+                <div class="flex justify-center">
+                  <div class="card blog w-full lg:max-w-2xl shadow-xl lg:rounded-md">
+                    <div>
+                      <div v-show="!post.imageLoaded" class="flex justify-center pt-16" key="loading">
+                        <div class="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-32 w-32"></div>
+                      </div>
+                      <img v-show="post.imageLoaded" @load="imageLoaded(post)" :src="post.images" class="lg:rounded-t-md"/>
+                    </div>
+                    <div class="text-md p-6">
+                      {{post.text}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </transition>
         </div>
       </main>
     </script>

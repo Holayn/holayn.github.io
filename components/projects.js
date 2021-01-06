@@ -1,9 +1,7 @@
 import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.esm.browser.js';
 
 import {navigate} from '../../utils.js';
-
-// sorry, access token has public permissions only :^)
-const githubToken = '1667be75a4b55861d7ff1bd5d7b8a4946e54ce61';
+import {githubToken} from '../globals.js';
 
 export const Projects = Vue.component('projects', {
   template: '#projects',
