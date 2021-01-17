@@ -1,12 +1,14 @@
 import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.esm.browser.js';
 import {navigate} from '../../utils.js';
 
-import {education} from './education.js';
-import {interests} from './interests.js';
-
 const cardContentMap = {
-  education,
-  interests
+  backpack: getBackpack(),
+  education: getEducation(),
+  interests: getInterests(),
+  map: getMap(),
+  pics: getPics(),
+  profiles: getProfiles(),
+  resume: getResume(),
 }
 
 Vue.component('about-item', {
@@ -65,3 +67,99 @@ export const About = Vue.component('about', {
     navigate,
   },
 });
+
+function getEducation() {
+  return /*html*/`
+    <div class="text-xl">Marist College, B.S. in Computer Science</div>
+    <div>Minors: Math, Music, I.T., I.S.</div>
+    <div>Favorite Coursework: Algorithms, OS, Compilers, Web Development, Theory of Programming Languages</div>
+  `;
+}
+
+function getInterests() {
+  return /*html*/`
+    <div class="inline text-xl">Piano</div>
+    <div>Been playing since I was 5</div>
+    <div>Because making music is fun</div>
+    <div>Also played the clarinet from middle school through college</div>
+    <div class="p-6">
+      accomplishments:
+      <ul class="list-disc pl-6">
+        <li>nov 2018: delivered college senior recital @ Marist College</li>
+        <li>april 2018: performed Warsaw Concerto w/ Marist College Wind Symphony</li>
+        <li>aug 2016 - dec 2018: Marist Nelly Goletti Music Scholarship Recipient, performed recitals and background music for various occasions</li>
+        <li>aug 2015: MTNA New York State Young Artist 2nd place</li>
+        <li>july 2015: performed Poulenc Double Piano concerto with PMI</li>
+        <li>may 2015: delivered high school senior recital</li>
+        <li>feb 2015: performed 3rd Beethoven Piano Concerto w/ Punahou Symphony Orchestra</li>
+        <li>jan 2015: MTNA Southwest Regional Senior Honorable Mention</li>
+        <li>nov 2014: MTNA Hawaii State Senior 1st place</li>
+      </ul>
+    </div>
+
+    <div class="inline text-xl">Coding</div>
+    <div>Because I like making things and the engineering aspects that go into it</div>
+    <div>See <a href="./#/projects" class="bright-text">here</a> for what I'm working on</div>
+    <div class="p-6"></div>
+
+    <div class="inline text-xl">Gaming</div>
+    <div>Because they're fun, especially with frens</div>
+    <a href="https://steamcommunity.com/id/Holayn" target="_blank" class="bright-text">steam profile</a>
+    <div class="p-6">
+      other games:
+      <ul class="list-disc pl-6">
+        <li>league of legends</li>
+        <li>teamfight tactics</li>
+        <li>board games</li>
+      </ul>
+    </div>
+  `;
+}
+
+function getProfiles() {
+  return /*html*/`
+    <div>
+      <a href="https://www.linkedin.com/in/kaiwonghi/" target="_blank" class="bright-text">linkedin</a> (warning - super out of date)
+    </div>
+  `;
+}
+
+function getBackpack() {
+  return /*html*/`
+    <div class="inline text-xl">things that I can't go without - stuff I would put in my life backpack - in no particular order</div>
+    <div class="p-6">
+      <ul class="list-disc pl-6">
+        <li>nice shoes/boots: sneakers (colehaan), chelseas, docs</li>
+        <li>nice fitting pants</li>
+        <li>pc with solid specs</li>
+        <li>grand piano</li>
+        <li>pet bird - cockatiel/parrotlet</li>
+      </ul>
+    </div>
+  `;
+}
+
+function getMap() {
+  return /*html*/`
+    <div class="inline text-xl">where I'm headed to in life</div>
+    <div class="p-6">
+      <ul class="list-disc pl-6">
+        <li>make enough money for a sizable nest egg / financial independence</li>
+        <li>retire early and/or start a business</li>
+      </ul>
+    </div>
+  `;
+}
+
+function getPics() {
+  return /*html*/`
+    nothing here yet
+  `;
+}
+
+function getResume() {
+  return /*html*/`
+    <div>this site serves as a living resume, but if you want a version that's condensed into one document...</div>
+    <a href="https://github.com/Holayn/resume/raw/master/resume.pdf" class="bright-text">download</a>
+  `;
+}
