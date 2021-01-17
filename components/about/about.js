@@ -1,42 +1,31 @@
 import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.esm.browser.js';
 import {navigate} from '../../utils.js';
 
-import {defaultContent} from './default.js';
 import {education} from './education.js';
 import {interests} from './interests.js';
 
 const cardContentMap = {
-  default: defaultContent,
   education,
   interests
 }
 
 Vue.component('about-item', {
   template: /*html*/`
-  <transition name="expand" :duration="{leave: leaveDuration}" mode="out-in" @after-enter="afterEnter">
-    <div v-if="active" style="min-height: 5rem" @click="toggle" class="h-96 p-6 shadow-2xl cursor-pointer" key="expanded">
-      <div class="text-2xl">
-        {{section}}
-      </div>
-      <div class="pt-6 text-l">
-      <transition name="fade" @after-leave="active = false" mode="out-in">
-        <div v-if="!transitioning" v-html="getContent()"></div>
-      </transition>
-      </div>
+  <div @click="toggle" class="p-6 cursor-pointer">
+    <div class="relative text-2xl">
+      {{section}}
     </div>
-    <div v-else style="min-height: 5rem" @click="toggle" class="p-6 shadow-2xl cursor-pointer" key="collapsed">
-      <div class="text-2xl">
-        {{section}}
+    <transition name="expand" mode="out-in" @enter="startTransition" @after-enter="endTransition" @before-leave="startTransition" @after-leave="endTransition">
+      <div v-if="active" class="text-l overflow-hidden" key="expanded">
+        <div class="pt-6" v-html="getContent()"></div>
       </div>
-    </div>
-  </transition>
+    </transition>
+  </div>
   `,
   props: ['section'],
   data: () => {
     return {
       active: false,
-      transitioning: false,
-      leaveDuration: 0,
     };
   },
   methods: {
@@ -44,17 +33,14 @@ Vue.component('about-item', {
       return cardContentMap[this.section];
     },
     toggle() {
-      if (this.active === false) {
-        this.leaveDuration = 100;
-        this.active = true;
-        this.transitioning = true;
-      } else {
-        this.leaveDuration = 500;
-        this.transitioning = true;
-      }
+      this.active = !this.active;
     },
-    afterEnter() {
-      this.transitioning = false;
+    startTransition(el) {
+      el.style.height = el.scrollHeight + 'px'
+    },
+
+    endTransition(el) {
+      el.style.height = ''
     }
   }
 });

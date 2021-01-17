@@ -6,9 +6,10 @@
 }
 
 .expand-enter-active, .expand-leave-active {
-  transition: height .3s ease-in-out;
+  will-change: height;
+  transition: height 0.2s ease;
 }
 
 .expand-enter, .expand-leave-to {
-  height: 0;
+  height: 0 !important;
 }
