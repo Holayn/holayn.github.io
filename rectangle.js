@@ -17,6 +17,8 @@ export const drawRectangle = (elem, size = 100) => {
 export const makeRectangle = (rectangleElem, textId) => {
   if (window.innerWidth < 1024) {
     drawRectangle(rectangleElem, 200);
+  } else if (window.innerHeight < 600) {
+    drawRectangle(rectangleElem, 200);
   } else {
     drawRectangle(rectangleElem);
   }

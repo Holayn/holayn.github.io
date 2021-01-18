@@ -4,6 +4,7 @@ import {About} from './components/about/about.js';
 import {Home} from './components/home.js';
 import {Projects} from './components/projects.js';
 import {XpSkills} from './components/xpskills/xpskills.js';
+import {BlogPost} from './components/blogpost.js';
 
 export const router = new VueRouter({
   routes: [
@@ -30,6 +31,11 @@ export const router = new VueRouter({
       name: 'xpskills',
       path: '/xpskills',
       component: XpSkills,
+    },
+    {
+      name: 'blogpost',
+      path: '/blog-post',
+      component: BlogPost,
     }
   ],
 });

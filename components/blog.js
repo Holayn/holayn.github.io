@@ -5,6 +5,38 @@ import {githubToken} from '../globals.js';
 
 const maxPostsPerFetch = 10;
 
+Vue.component('blog-item', {
+  template: /*html*/`
+    <div class="blog-item">
+      <div class="flex justify-center bright-text text-4xl">
+        {{post.title}}
+      </div>
+      <div class="flex justify-center bright-text text-2xl">
+        {{post.date.toDateString()}}
+      </div>
+      <div class="flex justify-center">
+        <div class="card blog w-full lg:max-w-2xl shadow-xl lg:rounded-md">
+          <div>
+            <div v-show="!post.imageLoaded" class="flex justify-center pt-16" key="loading">
+              <div class="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-32 w-32"></div>
+            </div>
+            <img v-show="post.imageLoaded" @load="imageLoaded(post)" :src="post.images" class="lg:rounded-t-md"/>
+          </div>
+          <div class="text-md p-6">
+            {{post.text}}
+          </div>
+        </div>
+      </div>
+    </div>
+  `,
+  props: ['post'],
+  methods: {
+    imageLoaded(post) {
+      Vue.set(post, 'imageLoaded', true);
+    },
+  }
+});
+
 export const Blog = Vue.component('blog', {
   template: '#blog',
   data: function() {
@@ -16,9 +48,6 @@ export const Blog = Vue.component('blog', {
     };
   },
   methods: {
-    foo: function() {
-      console.log('hi')
-    },
     getPosts: async function(page) {
       this.loading = true;
       const posts = await (await
@@ -45,9 +74,6 @@ export const Blog = Vue.component('blog', {
       }));
 
       this.loading = false;
-    },
-    imageLoaded(post) {
-      Vue.set(post, 'imageLoaded', true);
     },
     navigate,
   },
