@@ -1,57 +1,260 @@
 <!DOCTYPE html>
-<html lang="en" >
-
-<head>
-  <meta charset="UTF-8">
-  <title>Kai Wong</title>
-  <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1" >
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css'>
-
-      <link rel="stylesheet" href="css/style.css">
-
-  
-</head>
-
-<body class="blue lighten-5">
-
-  <div class="container">
-    <div class="row">
-      <div class="col s12">
-        <h1 class="center-align">Kai Wong</h1>
-      </div>
+<html class="text-3xl lg:text-base">
+  <title>Kai</title>
+  <head>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/scrollbar.css"/>
+    <link rel="stylesheet" href="css/accordion.css"/>
+    <link rel="stylesheet" href="css/spinner.css"/>
+    <link rel="stylesheet" href="css/home.css"/>
+    <link rel="stylesheet" href="css/projects.css"/>
+    <link rel="stylesheet" href="css/xpskills.css"/>
+    <link rel="stylesheet" href="css/blog.css"/>
+    <link rel="preload" as="image" href="./assets/about-cover.JPG"/>
+  </head>
+  <body>
+    <div id="app">
+      <transition name="fade" mode="out-in">
+        <router-view></router-view>
+      </transition>
     </div>
-    <hr>
-    <div class="row">
-      <div class="col s2"></div>
-      <div class="col s8">
-        <div class="card blue-grey lighten-1 hoverable">
-            <div class="card-image">
-              <img  class="materialboxed" src="files/tongue.JPG">
-            </div>
-          <div class="card-content white-text">
-            <p class="blue-text text-lighten-5">Hi! My site is currently under construction.</p>
+
+    <script type="text/x-template" id="home">
+      <main style="display: flex; justify-content: center; align-items: center;">
+        <div class="flex relative panel" style="height: 20rem">
+          <div id="left-text" class="flex items-center text-2xl">
+            projects
           </div>
-          <div class="card-action">
-            <a href="files/KaiWongCV.pdf">Resume</a>
-            <a href="https://www.linkedin.com/in/kaiwonghi/">LinkedIn</a>
-            <a href="http://github.com/Holayn">GitHub</a>
+          <div class="diamond z-10">
+            <div class="left-diamond">
+              <canvas @click="navigate('projects')" id="left-rectangle" ref="left-rectangle" class="rectangle hvr-grow"></canvas>
+            </div>
+          </div>
+          <div class="flex flex-col items-center">
+            <div id="top-text" class="flex absolute justify-center text-2xl" style="margin-bottom: 50px">
+              about
+            </div>
+            <div class="diamond relative z-10">
+              <div class="top-diamond">
+                <canvas @click="navigate('about')" id="top-rectangle" ref="top-rectangle" class="rectangle hvr-grow"></canvas>
+              </div>
+            </div>
+            <div class="diamond">
+              <div class="bottom-diamond">
+                <canvas @click="navigate('blog')" id="bottom-rectangle" ref="bottom-rectangle" class="rectangle hvr-grow"></canvas>
+              </div>
+            </div>
+            <div id="bottom-text" class="flex items-center text-2xl">
+              blog
+            </div>
+          </div>
+          <div class="diamond">
+            <div class="right-diamond">
+              <canvas @click="navigate('xpskills')" id="right-rectangle" ref="right-rectangle" class="rectangle hvr-grow"></canvas>
+            </div>
+          </div>
+          <div id="right-text" class="flex items-center text-2xl">
+            xp/skills
           </div>
         </div>
-      </div>
-      <div class="col s2"></div>
-    </div>
-  </div>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js'></script>
-  <script>
-    $(document).ready(function(){
-      $('.materialboxed').materialbox();
-    });
-  </script>
+      </main>
+    </script>
 
-</body>
+    <script type="text/x-template" id="about">
+      <main>
+        <div class="grid h-full" style="grid-template-rows: 5rem 15rem 25rem auto">
+          <div class="flex justify-center items-center p-6">
+            <div class="z-10 cursor-pointer" @click="navigate({name: 'home'})">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#C9ADA7" width="2rem" height="2rem"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            </div>
+          </div>
+          <div class="flex items-end justify-center">
+            <div class="header-text text-5xl pb-20">
+              about me
+            </div>
+          </div>
+          <div class="flex items-center justify-center pb-20">
+            <img class="w-96 h-96 rounded-full object-cover animate__animated animate__fadeIn" src="./assets/about-cover.JPG"/>
+          </div>
+          <div class="sections">
+            <about-item :section="'education'"></about-item>
+            <about-item :section="'interests'"></about-item>
+            <about-item :section="'profiles'"></about-item>
+            <about-item :section="'backpack'"></about-item>
+            <about-item :section="'map'"></about-item>
+            <about-item :section="'pics'"></about-item>
+            <about-item :section="'resume'"></about-item>
+          </div>
+        </div>
+      </main>
+    </script>
 
+    <script type="text/x-template" id="blog">
+      <main>
+        <div class="grid h-full" style="grid-template-rows: 5rem 15rem auto">
+          <div class="flex justify-center items-center p-6">
+            <div class="z-10 cursor-pointer" @click="navigate({name: 'home'})">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#C9ADA7" width="2rem" height="2rem"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            </div>
+          </div>
+          <div class="flex items-end justify-center">
+            <div class="header-text text-5xl pb-20">
+              blog
+            </div>
+          </div>
+          <transition name="fade" mode="out-in">
+            <div v-if="loading" class="flex justify-center pt-16" key="loading">
+              <div class="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-32 w-32"></div>
+            </div>
+            <div v-if="!loading" class="grid gap-4 py-4">
+              <div v-for="post in posts" :key="post.id" class="py-12">
+                <blog-item :post="post"/>
+              </div>
+            </div>
+          </transition>
+        </div>
+      </main>
+    </script>
+
+    <script type="text/x-template" id="blogpost">
+      <main>
+        <div class="grid h-full" style="grid-template-rows: 5rem auto">
+          <div class="flex justify-center items-center p-6">
+            <div class="z-10 cursor-pointer" @click="navigate({name: 'home'})">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#C9ADA7" width="2rem" height="2rem"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            </div>
+          </div>
+          <transition name="fade" mode="out-in">
+            <div v-if="loading" class="flex justify-center pt-16" key="loading">
+              <div class="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-32 w-32"></div>
+            </div>
+            <div v-if="!loading" class="grid gap-4 py-4">
+              <blog-item :post="post"/>
+            </div>
+          </transition>
+        </div>
+      </main>
+    </script>
+
+    <script type="text/x-template" id="xpskills">
+      <main>
+        <div class="grid h-full" style="grid-template-rows: 5rem 15rem auto">
+          <div class="flex justify-center items-center p-6">
+            <div class="z-10 cursor-pointer" @click="navigate({name: 'home'})">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#C9ADA7" width="2rem" height="2rem"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            </div>
+          </div>
+          <div class="flex items-end justify-center">
+            <div class="header-text text-5xl pb-20">
+              experience/skills
+            </div>
+          </div>
+          <div class="flex flex-wrap items-center justify-center pb-8">
+            <div class="flex flex-col items-center justify-center p-6">
+              <div class="bright-text text-2xl">core</div>
+              <div class="text text-xl pb-6">primary languages/technologies</div>
+              <div class="core flex flex-col items-center justify-center rounded-full h-96 w-96">
+                <div class="flex">
+                  <img src="./assets/vue.png" class="h-16"/>
+                  <img src="./assets/js.png" class="h-16"/>
+                  <img src="./assets/ts.png" class="h-16"/>
+                </div>
+                <div class="flex">
+                  <img src="./assets/node.png" class="h-16"/>
+                  <img src="./assets/html.png" class="h-16"/>
+                  <img src="./assets/css.png" class="h-16"/>
+                </div>
+                <div>
+                  frontend dev
+                </div>
+                <div>
+                  backend dev
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col items-center justify-center p-6">
+              <div class="bright-text text-2xl">secondary</div>
+              <div class="text text-xl pb-6">used these in the past</div>
+              <div class="secondary flex flex-col items-center justify-center rounded-full h-72 w-72">
+                <div class="flex">
+                  <img src="./assets/java.png" class="h-16"/>
+                  <img src="./assets/sql.png" class="h-16"/>
+                  <img src="./assets/python.png" class="h-16"/>
+                </div>
+                <div class="flex">
+                  <img src="./assets/angular.png" class="h-16"/>
+                  <img src="./assets/php.png" class="h-16"/>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col items-center justify-center p-6">
+              <div class="bright-text text-2xl">misc</div>
+              <div class="text text-xl pb-6">use them daily</div>
+              <div class="misc flex flex-col items-center justify-center rounded-full h-72 w-72">
+                <div class="flex">
+                  <img src="./assets/git.png" class="h-16"/>
+                </div>
+                <div class="flex">
+                  <img src="./assets/heroku.png" class="h-16"/>
+                  <img src="./assets/jenkins.png" class="h-16"/>
+                </div>
+              </div>
+            </div>
+          </div>
+          <experience-item :img="'./assets/factset.png'" :item="'factset'"></experience-item>
+          <experience-item :img="'./assets/factset.png'" :item="'factsetIntern'"></experience-item>
+          <experience-item :img="'./assets/ibm.png'" :item="'ibm'"></experience-item>
+        </div>
+      </main>
+    </script>
+
+    <script type="text/x-template" id="projects">
+      <main>
+        <div class="grid h-full" style="grid-template-rows: 5rem 15rem 5rem auto">
+          <div class="flex justify-center items-center p-6">
+            <div class="z-10 cursor-pointer" @click="navigate({name: 'home'})">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#C9ADA7" width="2rem" height="2rem"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            </div>
+          </div>
+          <div class="flex items-end justify-center">
+            <div class="header-text text-5xl pb-20">
+              projects
+            </div>
+          </div>
+          <div class="flex items-center justify-center">
+            <div class="text text-2xl">
+              a collection featuring my favorite projects
+            </div>
+          </div>
+          <transition name="fade" mode="out-in">
+            <div v-if="loading" class="flex justify-center pt-16" key="loading">
+              <div class="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-32 w-32"></div>
+            </div>
+            <div v-if="!loading" class="grid gap-4 p-4" style="grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); grid-template-rows: repeat(auto-fill, 20rem);">
+              <div v-for="repo in repos" :key="repo.id" class="card rounded-md p-6">
+                <div class="grid grid-cols-4 h-full" style="grid-template-rows: 3rem auto">
+                  <div class="col-span-3 text-2xl">
+                    {{repo.name}}
+                  </div>
+                  <div class="flex row-span-2 items-center justify-end">
+                    <a class="cursor-pointer" :href="repo.html_url" onclick="return false" @click="goToSourceCode(repo.html_url)" v-html="sourceCodeIcon"></a>
+                  </div>
+                  <div class="col-span-3 text-md">
+                    {{repo.description}}
+                  </div>
+                </div>
+                <div>
+                  {{repo.tags.join(', ')}}
+                </div>
+              </div>
+            </div>
+          </transition>
+        </div>
+      </main>
+    </script>
+    <script type="module" src="./index.js"></script>
+  </body>
 </html>

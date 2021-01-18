@@ -1,0 +1,15 @@
+.sections > div:nth-child(odd) {
+  background-color: var(--color2);
+}
+.sections {
+  color: var(--color5);
+}
+
+.expand-enter-active, .expand-leave-active {
+  will-change: height;
+  transition: height 0.2s ease;
+}
+
+.expand-enter, .expand-leave-to {
+  height: 0 !important;
+}

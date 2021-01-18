@@ -1,0 +1,136 @@
+.left-diamond {
+  padding-top: 168px;
+  padding-left: 150px;
+}
+.right-diamond {
+  padding-left: 168px;
+  padding-top: 150px;
+}
+.top-diamond {
+  padding-top: 80px;
+  padding-left: 80px;
+}
+.bottom-diamond {
+  padding-top: 168px;
+  padding-left: 168px;
+}
+#bottom-text {
+  margin-top: 350px;
+}
+#right-text {
+  margin-left: 100px;
+}
+#left-text {
+  margin-right: 100px;
+}
+
+@media screen and (min-width: 1024px) {
+  .left-diamond {
+    padding-top: 69px;
+    padding-left: 123px;
+  }
+  .right-diamond {
+    padding-left: 69px;
+    padding-top: 123px;
+  }
+  .top-diamond {
+    padding-top: 53px;
+    padding-left: 53px;
+  }
+  .bottom-diamond {
+    padding-top: 68px;
+    padding-left: 68px;
+  }
+  #left-text {
+    margin-right: 50px;
+  }
+  #right-text {
+    margin-left: 50px;
+  }
+  #bottom-text {
+    margin-top: 100px;
+  }
+}
+
+#left-rectangle:hover {
+  transform: translateX(-5px) translateY(5px);
+}
+#right-rectangle:hover {
+  transform: translateX(5px) translateY(-5px);
+}
+#top-rectangle:hover {
+  transform: translateX(-5px) translateY(-5px);
+}
+#bottom-rectangle:hover {
+  transform: translateX(5px) translateY(5px);
+}
+
+#top-text, #left-text, #right-text, #bottom-text {
+  color: var(--color2);
+  transition-property: color;
+  transition-duration: 0.5s;
+}
+
+.hvr-grow {
+  transition-duration: 0.3s;
+  transition-property: transform;
+}
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+  transform: scale(1.1);
+}
+
+@keyframes pulse-left {
+	0% {
+		box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+	}
+
+	70% {
+		box-shadow: -3px 3px 0 5px rgba(255, 255, 255, 0);
+	}
+
+	100% {
+		box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+	}
+}
+@keyframes pulse-right {
+	0% {
+		box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+	}
+
+	70% {
+		box-shadow: 3px -3px 0 5px rgba(255, 255, 255, 0);
+	}
+
+	100% {
+		box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+	}
+}
+@keyframes pulse-up {
+	0% {
+		box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+	}
+
+	70% {
+		box-shadow: -3px -3px 0 5px rgba(255, 255, 255, 0);
+	}
+
+	100% {
+		box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+	}
+}
+@keyframes pulse-down {
+	0% {
+		box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+	}
+
+	70% {
+		box-shadow: 3px 3px 0 5px rgba(255, 255, 255, 0);
+	}
+
+	100% {
+		box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+	}
+}

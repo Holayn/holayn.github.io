@@ -1,0 +1,7 @@
+a {
+  transition-duration: 0.3s;
+  transition-property: transform;
+}
+a:hover {
+  transform: scale(1.1);
+}
